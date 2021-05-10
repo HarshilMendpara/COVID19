@@ -124,6 +124,16 @@ input::placeholder {
   border-radius: 10px;
 }
 
+.confirmed-data,
+.active-data{
+  color: red;
+}
+
+.recovered-data{
+  color:green;
+}
+
+
 .circle1,
 .circle2,
 .circle3,
