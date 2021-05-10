@@ -1,6 +1,7 @@
 const container = document.querySelector(".container");
 const input = document.querySelector("input");
 const url = "https://api.covid19api.com/live/country/india/status/confirmed/date/";
+const url1 = "http://localhost:8000";
 
 let usersArray = [];
 
@@ -33,15 +34,28 @@ const createCardList = (array) => {
     });
   };
   
-  fetch(url+$yesterday)
-    .then((data) => {
-      return data.text();
-    })
-    .then((result) => {
-      usersArray = JSON.parse(result);
-      createCardList(usersArray);
-    });
+  // const fetchFromServer = () => {
+  //   fetch(url1)
+  //   .then((data) => {
+  //     return data.text();
+  //   })
+  //   .then((result) => {
+  //     usersArray = JSON.parse(result);
+  //     createCardList(usersArray);
+  //   });
+  // } ;
+
+  // fetchFromServer();
   
+  fetch(url+$yesterday)
+  .then((data) => {
+    return data.text();
+  })
+  .then((result) => {
+    usersArray = JSON.parse(result);
+    createCardList(usersArray);
+  });
+
   input.addEventListener("input", (event) => {
     const searchStr = event.target.value.toLowerCase();
   
@@ -53,3 +67,5 @@ const createCardList = (array) => {
   
     createCardList(filteredArray);
   });
+
+  
